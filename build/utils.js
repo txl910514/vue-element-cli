@@ -1,11 +1,12 @@
+/**
+ * Created by txl-pc on 2017/7/23.
+ */
 var path = require('path')
-var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var config = require('../config')
 
 exports.assetsPath = function (_path) {
-  var assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  var assetsSubDirectory = config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -15,19 +16,35 @@ exports.cssLoaders = function (options) {
   var cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: process.env.NODE_ENV === 'production',
-      sourceMap: options.sourceMap
+      minimize: process.env.NODE_ENV !== 'dev',
+      sourceMap: process.env.NODE_ENV === 'dev'
+    }
+  }
+
+  var postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: process.env.NODE_ENV === 'dev'
+    }
+  }
+
+  var resolveUrlLoader = {
+    loader: 'resolve-url-loader',
+    options: {
+      sourceMap: process.env.NODE_ENV === 'dev'
     }
   }
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     var loaders = [cssLoader]
+    loaders.push(resolveUrlLoader)
+    loaders.push(postcssLoader)
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
+          sourceMap: process.env.NODE_ENV === 'dev'
         })
       })
     }
@@ -37,6 +54,7 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
+        publicPath: '../../',
         fallback: 'vue-style-loader'
       })
     } else {
@@ -56,7 +74,6 @@ exports.cssLoaders = function (options) {
   }
 }
 
-// Generate loaders for standalone style files (outside of .vue)
 exports.styleLoaders = function (options) {
   var output = []
   var loaders = exports.cssLoaders(options)
