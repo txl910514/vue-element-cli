@@ -38,7 +38,8 @@
     },
     computed: {
       searchs () {
-        return this.commonStore.search_data
+        const lang = this.$cookie.get('lang') || 'zh'
+        return Vue.t('hos_list') === 'hos_list' ? this.commonStore.local_lang[lang]['hos_list'] : Vue.t('hos_list')
       },
       ...mapState(['commonStore'])
     },

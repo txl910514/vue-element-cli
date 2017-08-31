@@ -2,6 +2,8 @@ const files = require.context('.', true, /\.js$/)
 
 import eleEN from 'element-ui/lib/locale/lang/en'
 import eleZH from 'element-ui/lib/locale/lang/zh-CN'
+import store from '@/store'
+import * as types from '@/store/types'
 
 let customZh = {}
 let customEn = {}
@@ -21,5 +23,5 @@ console.log(customZh)
 console.log(eleZH)
 addLang('zh', customZh, eleZH)
 addLang('en', customEn, eleEN)
-
+store.commit(types.LOCAL_LANG, locale)
 export default locale
