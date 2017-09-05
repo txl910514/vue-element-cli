@@ -14,6 +14,9 @@
     <div>
       <div v-for="search in searchs">{{search.nameZh}}</div>
     </div>
+    <!--<div>-->
+      <!--<div v-html="item" v-for="item in textData"></div>-->
+    <!--</div>-->
     <ul>
       <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
@@ -41,6 +44,9 @@
         const lang = this.$cookie.get('lang') || 'zh'
         return Vue.t('hos_list') === 'hos_list' ? this.commonStore.local_lang[lang]['hos_list'] : Vue.t('hos_list')
       },
+//      textData () {
+//        return this.commonStore.search_data
+//      },
       ...mapState(['commonStore'])
     },
     mounted () {

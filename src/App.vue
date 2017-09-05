@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+/*@import "assets/css/fontAwesome";*/
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
