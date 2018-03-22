@@ -12,6 +12,10 @@ export default {
 
 <style lang="scss" rel="stylesheet/scss">
 /*@import "assets/css/fontAwesome";*/
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;

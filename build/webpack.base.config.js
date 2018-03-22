@@ -97,6 +97,11 @@ module.exports = {
   },
   plugins: [
     // 加了这个 就可以在js用这个变量了
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.$' : 'jquery'
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"' + process.env.NODE_ENV + '"'

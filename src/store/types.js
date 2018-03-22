@@ -3,3 +3,4 @@
  */
 export const SEARCH_MUSIC = 'SEARCH_MUSIC'
 export const LOCAL_LANG = 'LOCAL_LANG'
+export const GET_GT = 'GET_GT'

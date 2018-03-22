@@ -12,6 +12,9 @@ const mutations = {
   },
   [types.LOCAL_LANG] (state, response) {
     state.local_lang = response
+  },
+  [types.GET_GT] (state, response) {
+    state.gt = response
   }
 }
 export default mutations

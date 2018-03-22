@@ -5,7 +5,8 @@ import actions from './actions'
 import mutations from './mutations'
 const state = {
   search_data: {},
-  local_lang: {}
+  local_lang: {},
+  gt: {}
 }
 
 export default {

@@ -13,5 +13,12 @@ export default {
       .then((res) => {
         return res
       })
+  },
+  getGt () {
+    return Vue.http('')
+      .get('http://www.geetest.com/demo/gt/register-click?t=' + (new Date()).getTime())
+      .then((res) => {
+        return res
+      })
   }
 }

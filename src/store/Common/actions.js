@@ -17,6 +17,20 @@ const actions = {
         .then((res) => {
         })
     })
+  },
+  [types.GET_GT] ({commit, state}, member) {
+    return new Promise((resolve, reject) => {
+      api.getGt(member)
+        .then((res) => {
+          commit(types.GET_GT, res)
+          resolve(res)
+        })
+        .catch((res, v) => {
+          console.log(res)
+        })
+        .then((res) => {
+        })
+    })
   }
 }
 export default actions
